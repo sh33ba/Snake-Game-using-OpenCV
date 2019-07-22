@@ -54,23 +54,22 @@
  
 '''Python
 
-    #apple random position
-        cv.rectangle(img,(apple_pos[0],apple_pos[1]),(apple_pos[0]+10,apple_pos[1]+10),(255,0,255),-1)
+    cv.rectangle(img,(apple_pos[0],apple_pos[1]),(apple_pos[0]+10,apple_pos[1]+10),(255,0,255),-1)
 
 '''
 
 2. Position of Snake
+
 '''Python
 
-     #position of snake
         for pos in snake_pos:
             cv.rectangle(img,(pos[0],pos[1]),(pos[0]+10,pos[1]+10),(0,255,0),-1)
 '''
 
 3. Using time
+
 '''Python
 
-     #using time to execute whole program until esc is pressed
         t_end = time.time() + 0.2
         k = -1
         while time.time() < t_end:
@@ -81,52 +80,50 @@
 '''
 
 4. Assigning Direction to Keys(Keyboard Keys)
+
 '''Python
 
-    #left direction
-        if k == ord('a') and prev_button_direction != 1:
-            button_direction = 0
+     if k == ord('a') and prev_button_direction != 1:
+         button_direction = 0
     
-    #right direction
     if k==ord("d") and prev_button_direction != 0:
         button_direction = 1
-        
-    #up direction
+     
     if k==ord("w") and prev_button_direction != 2:
         button_direction = 3
-        
-    ##down direction
+       
     if k==ord("s") and prev_button_direction != 3:
         button_direction = 2
-    
-    #quit
+     
     elif k == ord('q'):
         break
+        
     else:
         button_direction = button_direction
 '''
 
 5. Making Snake move in pressed Direction
+
 '''Python
 
-     #move right
         if button_direction == 1:
             snake_h[0] += 10
-        #move left
+        
         elif button_direction == 0:
             snake_h[0] -= 10
-        #move up
+        
         elif button_direction == 2:
             snake_h[1] += 10
-        #move down
+       
         elif button_direction == 3:
             snake_h[1] -= 10
 '''
 
 6. Calling apple_collision()
+
 '''Python
 
-    #calling apple_collision() 
+    
         if snake_h == apple_pos:
             apple_pos,score = apple_collision(apple_pos,score)
             snake_pos.insert(0,list(snake_h))
@@ -137,6 +134,7 @@
 '''
 
 7. Checking boundary_collision() and self_self_collision() and Displaying the result
+
 '''Python
 
      if boundary_collision(snake_h) == 1 or self_collision(snake_pos) == 1:
@@ -152,8 +150,4 @@
 
 ---
 ---
-### Sample Images 
-
-![image](./images_doc/01.jpg)
-
 
